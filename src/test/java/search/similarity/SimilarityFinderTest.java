@@ -62,5 +62,20 @@ public class SimilarityFinderTest
 		assertThat(result, is((double)0));
 	}
 	
+	@Test
+	public void sequenceReversed()
+	{
+		sequenceSearcherDubler = new SequenceSearcherDubler();
+		similarityFinder = new SimilarityFinder(sequenceSearcherDubler);
+		
+		int[] seq1 = {1,3,5,7,9,11};
+		int[] seq2 = {1,3,5,6};
+		
+		double resultOne = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+		double resultTwo = similarityFinder.calculateJackardSimilarity(seq2, seq1);
+		
+		assertThat(resultOne, is(resultTwo));
+		
+	}
 	
 }
