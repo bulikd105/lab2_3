@@ -14,6 +14,7 @@ public class SimilarityFinderTest
 	//Add new similarity finder
 	SimilarityFinder similarityFinder;
 	
+	//Test with elements in both sequences
 	@Test
 	public void sequenceWithElements()
 	{
@@ -27,20 +28,30 @@ public class SimilarityFinderTest
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		
 		//Run test
-		assertThat(result, is(2/7.0));
+		assertThat(result, is((double)2/7.0));
 	}
 	
+	//Test without elements in both sequences
 	@Test
 	public void sequenceWithoutElements()
 	{
-		//Add two sets of number 
 		int[] seq1 = {};
 		int[] seq2 = {};
 		
-		//Calculate result
 		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
 		
-		//Run test
 		assertThat(result, is((double)1));
+	}
+	
+	//Test with elements in one sequence
+	@Test
+	public void sequenceWithOneElementsSet()
+	{
+		int[] seq1 = {1,3,5,7};
+		int[] seq2 = {};
+		
+		double result = similarityFinder.calculateJackardSimilarity(seq1, seq2);
+		
+		assertThat(result, is((double)0));
 	}
 }
