@@ -8,15 +8,15 @@ import static org.junit.Assert.assertThat;
 
 public class SimilarityFinderTest 
 {
+	//Add new sequence searcher
+	SequenceSearcherDubler sequenceSearcherDubler = new SequenceSearcherDubler();
+	
+	//Add new similarity finder
+	SimilarityFinder similarityFinder = new SimilarityFinder(sequenceSearcherDubler);
+	
 	@Test
-	public void testResult()
+	public void sequenceWithElements()
 	{
-		//Add new sequence searcher
-		SequenceSearcherDubler sequenceSearcherDubler = new SequenceSearcherDubler();
-		
-		//Add new similarity finder
-		SimilarityFinder similarityFinder = new SimilarityFinder(sequenceSearcherDubler);
-		
 		//Add two sets of number 
 		int[] seq1 = {1,3,5,7,9,11};
 		int[] seq2 = {1,3,6};
@@ -27,4 +27,5 @@ public class SimilarityFinderTest
 		//Run test
 		assertThat(result, is(2/7.0));
 	}
+	
 }
